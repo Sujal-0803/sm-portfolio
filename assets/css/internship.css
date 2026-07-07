@@ -1,0 +1,184 @@
+/* ================ INTERNSHIP SECTION ================ */
+.internship-section {
+  padding: var(--section-spacing, 120px) 10%;
+  position: relative;
+  z-index: 2;
+}
+
+.internship-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* Internship card styles */
+.internship-card {
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(157, 78, 221, 0.2);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.internship-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary);
+  box-shadow: 0 15px 40px rgba(157, 78, 221, 0.3);
+}
+
+.internship-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--primary), var(--secondary));
+}
+
+.company-logo {
+  width: 60px;
+  height: 60px;
+  background: rgba(26, 26, 46, 0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: white;
+  border: 2px solid var(--primary);
+}
+
+.internship-role {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--secondary);
+  text-align: left; /* Ensure role is left-aligned */
+}
+
+.internship-company {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  margin-bottom: 15px;
+  text-align: left; /* Ensure company is left-aligned */
+}
+
+.internship-duration {
+  display: inline-block;
+  background: rgba(157, 78, 221, 0.2);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: var(--text-lighter);
+  margin-bottom: 20px;
+  text-align: center; /* Center text in duration badge */
+}
+
+.internship-description {
+  color: var(--text-gray);
+  line-height: 1.7;
+  margin-bottom: 25px;
+  text-align: justify; /* Added text justification */
+  text-justify: inter-word; /* Improves word spacing in justified text */
+  hyphens: auto; /* Enables hyphenation for better text flow */
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.tech-item {
+  background: rgba(102, 252, 241, 0.1);
+  color: var(--secondary);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  text-align: center; /* Center text in tech badges */
+}
+
+/* ================ RESPONSIVE DESIGN ================ */
+
+/* Large desktops */
+@media (max-width: 1200px) {
+  .internship-section {
+    padding: 100px 7%;
+  }
+}
+
+/* Tablets and smaller desktops */
+@media (max-width: 992px) {
+  .internship-section {
+    padding: 90px 5%;
+  }
+
+  .internship-container {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .internship-container {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .internship-card {
+    padding: 35px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 576px) {
+  .internship-section {
+    padding: 80px 5%;
+  }
+
+  .internship-card {
+    padding: 25px 20px;
+  }
+
+  .internship-role {
+    font-size: 1.4rem;
+  }
+
+  .internship-company {
+    font-size: 1.1rem;
+  }
+
+  .internship-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .tech-stack {
+    gap: 8px;
+  }
+
+  .tech-item {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 400px) {
+  .internship-role {
+    font-size: 1.3rem;
+  }
+
+  .internship-duration {
+    font-size: 0.85rem;
+  }
+}

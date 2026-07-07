@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sujal Maru | Portfolio</title>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./assets/css/home.css">
+    <link rel="stylesheet" href="./assets/css/hero.css">
+    <link rel="stylesheet" href="./assets/css/about.css">
+    <link rel="stylesheet" href="./assets/css/skills.css">
+    <link rel="stylesheet" href="./assets/css/education.css">
+    <link rel="stylesheet" href="./assets/css/internship.css">
+    <link rel="stylesheet" href="./assets/css/project.css">
+    <link rel="stylesheet" href="./assets/css/cta.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/profilephoto.css">
+    <link rel="stylesheet" href="./assets/css/background.css">
+    <link rel="stylesheet" href="./assets/css/resumebtn.css">
+
+</head>
+
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="./assets/img/mylogo.png" alt="" class="logopng">
+            </div>
+            <!-- SUJAL MARU -->
+        </a>
+
+        <!-- NEW MOBILE NAVIGATION ICONS -->
+        <div class="mobile-nav-icons">
+            <a href="#about" class="mobile-nav-icon">
+                <i class="fas fa-user"></i>
+                <span class="icon-label">About</span>
+            </a>
+            <a href="#skills" class="mobile-nav-icon">
+                <i class="fas fa-code"></i>
+                <span class="icon-label">Skills</span>
+            </a>
+            <a href="./components/project.html" class="mobile-nav-icon">
+                <i class="fas fa-laptop"></i>
+                <span class="icon-label">Projects</span>
+            </a>
+            <a href="./components/experience.html" class="mobile-nav-icon">
+                <i class="fas fa-briefcase"></i>
+                <span class="icon-label">Experience</span>
+            </a>
+
+            <a href="#education" class="mobile-nav-icon">
+                <i class="fas fa-graduation-cap"></i>
+                <span class="icon-label">Education</span>
+            </a>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="./components/project.html">Projects</a>
+            <a href="./components/experience.html">Experience</a>
+            <a href="#education">Education</a>
+        </div>
+        <button class="contact-button" onclick="window.location.href='./components/contact.html'">
+            <i class="fas fa-phone"></i>
+            <span class="tooltip">Contact Us</span>
+        </button>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-container">
+            <div class="hero">
+                <div class="hero-content-wrapper">
+                    <div class="hero-left">
+                        <h3 class="hero-subtitle">Hi, I'm</h3>
+                        <h1 class="hero-title">Sujal Maru</span></h1>
+
+                        <p class="hero-text">
+                            <span id="changing-role"></span><br>
+                        </p>
+
+                        <div class="cta-buttons">
+                            <a href="./components/project.html" class="btn btn-primary">
+                                <i class="fas fa-laptop-code"></i>My Work
+                            </a>
+                            <a href="https://drive.google.com/file/d/18EErW1U-U-WJK9YwlVKLrhfFiadajE7J/view?usp=sharing" download class="btn btn-primary">
+                                <i class="fas fa-file-lines"></i> My Resume
+                            </a>
+                            <a href="https://leetcode.com/u/Sujal_Maru" class="btn btn-primary">
+                                <i class="fas fa-code"></i>LeetCode
+                            </a>
+                        </div>
+                    </div>
+                    <!-- <div class="hero-right">
+                        <div class="profile-photo">
+                            <img src="./assets/img/profile-image.png" alt="Sujal Maru">
+                        </div>
+                    </div> -->  
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section class="about-section-container">
+
+        <div class="about-header-wrapper">
+            <h1 class="about-main-heading">About Me</h1>
+            <p class="about-subheading">Get to know the person behind the code</p>
+        </div>
+
+        <div class="about-content-container">
+            <div class="about-details-content">
+                <h3>Aspiring Software Engineer | Java & Full-Stack Developer</h3>
+
+                <p>
+                    I'm Sujal Maru, an Electronics & Telecommunication graduate (2025) with a strong passion 
+                    for building impactful and scalable web applications. Through personal projects, I've 
+                    developed web applications using Java, JSP, Servlets, JDBC, and MySQL, while my ongoing 
+                    internship has provided hands-on experience with React.js, Node.js, Express.js, and MySQL. 
+                    I'm deeply interested in creating dynamic user experiences, optimizing backend systems, 
+                    and writing clean, efficient code.
+                </p>
+
+                <p>
+                    Curious, driven, and always eager to learn, I thrive in collaborative environments where I can
+                    contribute meaningfully while growing alongside experienced teams. I'm now seeking an opportunity to
+                    apply my development skills, take on new challenges, and grow into a valuable member of your
+                    engineering team.
+                </p>
+
+                <div class="about-action-buttons">
+                    <a href="./components/contact.html" class="about-btn about-btn-primary">
+                        <i class="fas fa-phone"></i> Let's Talk
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Tech Stack -->
+    <section id="skills" class="skills-section" aria-label="Skill categories and technologies">
+        <div class="section-header">
+            <h1>Teck Stack</h1>
+            <p>A showcase of my diverse skills and technologies I've mastered throughout my development career</p>
+        </div>
+        <!-- languages -->
+        <article class="skill-card" aria-labelledby="frontend-title">
+            <div class="skill-header">
+                <div class="icon-container" aria-hidden="true">
+                    <span class="iconify" data-icon="mdi:code-braces" data-inline="false"
+                        style="font-size: 28px; color: #4caf50;"></span>
+                </div>
+                <h2 id="frontend-title">Programming & CS Fundamentals</h2>
+
+            </div>
+
+            <div class="skill-tags">
+                <span class="tag" title="C programming language">
+                    <i class="devicon-c-plain colored tag-icon" style="color: #A8B9CC; font-size: 20px;"></i> C language
+                </span>
+                <span class="tag" title="Java programming language">
+                    <i class="devicon-java-plain colored tag-icon" style="color: #f89820; font-size: 20px;"></i> Java
+                </span>
+                <span class="tag" title="Data Structures & Algorithms">
+                    <i class="fa-solid fa-code-branch colored tag-icon" style="color: #6f42c1; font-size: 20px;"></i>
+                    DSA
+                </span>
+                <span class="tag" title="SQL">
+                    <i class="fa-solid fa-database tag-icon" style="color: #00618A; font-size: 20px;"></i> SQL
+                </span>
+
+                <!-- <span class="tag" title="PL/SQL">
+                    <i class="fa-solid fa-database tag-icon" style="color: #F80000; font-size: 20px;"></i> PL/SQL
+                </span> -->
+
+                <span class="tag" title="Object Oriented Programming">
+                    <span class="material-icons tag-icon"
+                        style="color: #2196f3; font-size: 20px; vertical-align: middle;">category</span> OOP
+                </span>
+                <span class="tag" title="Database Management System">
+                    <i class="devicon-mysql-plain colored tag-icon" style="color: #4479A1; font-size: 20px;"></i> DBMS
+                </span>
+            </div>
+
+        </article>
+        <!-- Frontend Development -->
+        <article class="skill-card" aria-labelledby="frontend-title">
+            <div class="skill-header">
+                <div class="icon-container" aria-hidden="true">
+                    <span class="iconify" data-icon="logos:react" data-inline="false"
+                        style="font-size: 28px; color: #61dafb;"></span>
+                </div>
+                <h2 id="frontend-title">Frontend Development</h2>
+            </div>
+
+            <div class="skill-tags">
+                <span class="tag" title="React JavaScript Library">
+                    <i class="devicon-react-original colored tag-icon"></i> React
+                </span>
+
+                <span class="tag" title="HTML language">
+                    <i class="fa-brands fa-html5 tag-icon" style="color:#E34F26;"></i> HTML
+                </span>
+
+                <span class="tag" title="CSS styling language">
+                    <i class="fa-brands fa-css3-alt tag-icon" style="color:#1572B6;"></i> CSS
+                </span>
+
+                <span class="tag" title="JavaScript language">
+                    <i class="devicon-javascript-plain colored tag-icon"></i> JavaScript
+                </span>
+
+                <!-- <span class="tag" title="WordPress">
+                    <i class="fa-brands fa-wordpress tag-icon" style="color:#21759B; font-size:20px;"></i> WordPress
+                </span> -->
+
+                <span class="tag" title="Java Server Pages (JSP)">
+                    <i class="fa-solid fa-code tag-icon" style="color:#007396;"></i> JSP
+                </span>
+                
+                <span class="tag" title="Bootstrap CSS Framework">
+                    <i class="fa-brands fa-bootstrap tag-icon" style="color:#7952B3;"></i> Bootstrap
+                </span>
+            </div>
+
+
+        </article>
+
+        <!-- Backend Development -->
+        <article class="skill-card" aria-labelledby="backend-title">
+            <div class="skill-header">
+                <div class="icon-container" aria-hidden="true">
+                    <span class="iconify" data-icon="mdi:server" data-inline="false"
+                        style="font-size: 28px; color: #2196f3;"></span>
+                </div>
+                <h2 id="backend-title">Backend Development</h2>
+            </div>
+
+            <div class="skill-tags">
+                <span class="tag" title="Java programming language">
+                    <span class="iconify tag-icon" data-icon="logos:java" data-inline="false"
+                        style="color: #f89820;"></span> Java
+                </span>
+
+                <span class="tag" title="JDBC (Java Database Connectivity)">
+                    <span class="iconify tag-icon" data-icon="mdi:database" data-inline="false"
+                        style="color: #4caf50;"></span> JDBC
+                </span>
+
+                <span class="tag" title="Node.js runtime environment">
+                    <span class="iconify tag-icon" data-icon="logos:nodejs-icon" data-inline="false"
+                        style="color: #3C873A;"></span> Node.js
+                </span>
+
+                <span class="tag" title="REST APIs">
+                    <span class="iconify tag-icon" data-icon="mdi:webhook" data-inline="false"
+                        style="color: #FF4081;"></span> REST APIs
+                </span>
+
+                <span class="tag" title="Java Servlets">
+                    <span class="iconify tag-icon" data-icon="logos:java" data-inline="false"
+                        style="color: #f89820;"></span> Servlet
+                </span>
+
+                <span class="tag" title="Spring Boot Framework">
+                    <span class="iconify tag-icon" data-icon="logos:spring-icon" data-inline="false"
+                        style="color: #6DB33F;"></span> Spring Boot
+                </span>
+
+                <span class="tag" title="Java Servlets">
+                    <span class="iconify tag-icon" data-icon="logos:php" data-inline="false"
+                        style="color: #336791;"></span> PHP
+                </span>
+
+                <span class="tag" title="PHP programming language">
+                    <span class="iconify tag-icon" data-icon="mdi:cat" data-inline="false"
+                        style="color: #EE0000;"></span> Apache Tomcat
+                </span>
+            </div>
+
+
+        </article>
+
+        <!-- UI/UX Design -->
+        <article class="skill-card" aria-labelledby="uiux-title">
+            <div class="skill-header">
+                <div class="icon-container" aria-hidden="true">
+                    <span class="iconify" data-icon="mdi:database" data-inline="false"
+                        style="font-size: 28px; color: #4caf50;"></span>
+                </div>
+                <h2 id="uiux-title">Database</h2>
+            </div>
+
+            <div class="skill-tags">
+                <span class="tag" title="MySQL database">
+                    <span class="iconify tag-icon" data-icon="logos:mysql" data-inline="false"
+                        style="color:#4479A1;"></span> MySQL
+                </span>
+
+                <span class="tag" title="MongoDB database">
+                    <span class="iconify tag-icon" data-icon="logos:mongodb-icon" data-inline="false"
+                        style="color:#47A248;"></span> MongoDB
+                </span>
+
+                <span class="tag" title="PostgreSQL database">
+                    <span class="iconify tag-icon" data-icon="logos:postgresql" data-inline="false"
+                        style="color:#336791;"></span> PostgreSQL
+                </span>
+                <!-- <span class="tag" title="XAMPP server">
+                    <span class="iconify tag-icon" data-icon="simple-icons:xampp" data-inline="false"
+                        style="color:#FF7900;"></span> XAMPP -
+                    MariaDB
+                </span> -->
+            </div>
+        </article>
+
+        <!-- Tools & Technologies -->
+        <article class="skill-card" aria-labelledby="tools-title">
+            <div class="skill-header">
+                <div class="icon-container" aria-hidden="true">
+                    <span class="iconify" data-icon="mdi:chip" data-inline="false"
+                        style="font-size: 28px; color: #ff5722;"></span>
+                </div>
+                <h2 id="tools-title">Tools &amp; Technologies</h2>
+            </div>
+
+            <div class="skill-tags">
+                <span class="tag" title="Visual Studio Code editor">
+                    <span class="iconify tag-icon" data-icon="vscode-icons:file-type-vscode" data-inline="false"
+                        style="color:#007ACC;"></span> VS Code
+                </span>
+
+                <span class="tag" title="Git version control system">
+                    <span class="iconify tag-icon" data-icon="logos:git-icon" data-inline="false"
+                        style="color:#F05032;"></span> Git
+                </span>
+
+                <span class="tag" title="GitHub platform" style="display: inline-flex; align-items: center; gap: 6px;">
+                    <span class="iconify tag-icon" data-icon="logos:github-icon" data-inline="false"
+                        style="color:#fff; background: rgb(248, 246, 246); border-radius: 50%; padding: 4px;"></span>
+                    GitHub
+                </span>
+
+                <!-- <span class="tag" title="Jira project management tool">
+                    <span class="iconify tag-icon" data-icon="logos:jira" data-inline="false"
+                        style="color:#0052CC;"></span> Jira
+                </span> -->
+
+                <span class="tag" title="Spring Tool Suite IDE">
+                    <span class="iconify tag-icon" data-icon="logos:spring-icon" data-inline="false"
+                        style="color:#6DB33F;"></span> Spring Suite
+                </span>
+
+                <span class="tag" title="MySQL Workbench">
+                    <span class="iconify tag-icon" data-icon="logos:mysql" data-inline="false"
+                        style="color:#4479A1;"></span> Workbench
+                </span>
+
+                <span class="tag" title="Oracle SQL Developer">
+                    <i class="fa-solid fa-laptop-code tag-icon" style="color: #F80000; font-size: 20px;"></i> SQL
+                    Developer
+                </span>
+
+                <span class="tag" title="Eclipse IDE">
+                    <i class="fa-solid fa-circle-half-stroke tag-icon" style="color: #2C2255; font-size: 20px;"></i>
+                    Eclipse
+                </span>
+
+                <span class="tag" title="IntelliJ IDEA">
+                    <i class="fa-solid fa-code tag-icon" style="color: #D13A95; font-size: 20px;"></i> IntelliJ
+                </span>
+
+                <span class="tag" title="Firebase">
+                    <span class="iconify tag-icon" data-icon="logos:firebase-icon" data-inline="false"
+                        style="color:#6DB33F;"></span> Firebase
+                </span>
+            </div>
+        </article>
+
+        <!-- Creative Skills -->
+        <article class="skill-card" aria-labelledby="creative-title">
+            <div class="skill-header">
+                <div class="icon-container" aria-hidden="true">
+                    <span class="iconify" data-icon="mdi:palette" data-inline="false"
+                        style="font-size: 28px; color: #ff5722;"></span>
+                </div>
+                <h2 id="creative-title">Creative Skills</h2>
+            </div>
+
+            <div class="skill-tags">
+                <span class="tag" title="Responsive Design">
+                    <span class="iconify tag-icon" data-icon="mdi:monitor-cellphone" data-inline="false"
+                        style="color:#4caf50;"></span> Responsive
+                </span>
+
+                <span class="tag" title="UI Animation skills">
+                    <span class="iconify tag-icon" data-icon="mdi:animation" data-inline="false"
+                        style="color:#2196f3;"></span> UI Animation
+                </span>
+
+                <span class="tag" title="Animated Logo">
+                    <span class="iconify tag-icon" data-icon="mdi:play-circle-outline" data-inline="false"
+                        style="color:#f44336;"></span> Animated Logo
+                </span>
+
+                <span class="tag" title="UI / UX Design">
+                    <span class="iconify tag-icon" data-icon="mdi:view-dashboard-outline" data-inline="false"
+                        style="color:#ff9800;"></span> UI / UX
+                </span>
+
+                <span class="tag" title="Photography">
+                    <span class="iconify tag-icon" data-icon="mdi:camera" data-inline="false"
+                        style="color:#795548;"></span> Photography
+                </span>
+                
+                <!-- <span class="tag" title="Video Editing">
+                    <span class="iconify tag-icon" data-icon="mdi:movie-edit" data-inline="false"
+                        style="color:#e91e63;">
+                    </span> Video Editing
+                </span> -->
+            </div>
+        </article>
+
+    </section>
+    <!-- Project Section -->
+    <section class="project-section" id="projects">
+        <div class="section-header">
+            <h1>Featured Projects</h1>
+            <p>Creative solutions to real-world challenges</p>
+        </div>
+
+        <div class="project-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="./assets/img/project/codenext.png" alt="Java Applications">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">CodeNext — Developer Learning Platform</h3>
+                    <p class="project-description">
+                        Built a full-stack learning platform where developers can explore tutorials, 
+                        test skills with quizzes and track progress on a competitive leaderboard.
+                    </p>
+                    <div class="project-meta">
+                        <div class="project-links">
+                            <a href="#" class="project-link" title="Live Demo"><i
+                                    class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/Sujal-0803/CodeNext-Learning-Platform" class="project-link"
+                                title="Source Code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-skills">
+                    <h4 class="skills-title">Skills Used</h4>
+                    <div class="skills-list">
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">Java</span>
+                        <span class="skill-badge">Servlets</span>
+                        <span class="skill-badge">JSP</span>
+                        <span class="skill-badge">JDBC</span>
+                        <span class="skill-badge">MySQL</span>
+                        <span class="skill-badge">Apache Tomcat</span>
+                        <span class="skill-badge">Responsive Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="./assets/img/project/eds.png" alt="HTML Applications">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Employee Data System</h3>
+                    <p class="project-description">
+                        Built an employee management portal where admins can manage workforce data, 
+                        track department insights with live charts, and monitor activity through a 
+                        real-time audit log.
+                    </p>
+                    <div class="project-meta">
+                        <div class="project-links">
+                            <a href="#" class="project-link" title="Live Demo"><i
+                                    class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/Sujal-0803/Employee-Data-System" class="project-link"
+                                title="Source Code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-skills">
+                    <h4 class="skills-title">Skills Used</h4>
+                    <div class="skills-list">
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">Java</span>
+                        <span class="skill-badge">Servlets</span>
+                        <span class="skill-badge">JSP</span>
+                        <span class="skill-badge">JDBC</span>
+                        <span class="skill-badge">MySQL</span>
+                        <span class="skill-badge">Apache Tomcat</span>
+                        <span class="skill-badge">MVC Architecture</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="./assets/img/project/cold-storage.png" alt="HTML Applications">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Cold Storage Ecommerce Website</h3>
+                    <p class="project-description">
+                    Designed a modern cold storage eCommerce platform for seamless fresh and frozen product delivery.
+                    </p>
+                    <div class="project-meta">
+                        <div class="project-links">
+                            <a href="https://sujal-0803.github.io/cold-storage-ecommerce/" class="project-link" title="Live Demo"><i
+                                    class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/Sujal-0803/cold-storage-ecommerce" class="project-link"
+                                title="Source Code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-skills">
+                    <h4 class="skills-title">Skills Used</h4>
+                    <div class="skills-list">
+                        <span class="skill-badge">HTML5</span>
+                        <span class="skill-badge">CSS3</span>
+                        <span class="skill-badge">JavaScript E56</span>
+                        <span class="skill-badge">Bootstrap 5</span>
+                        <span class="skill-badge">Firebase</span>
+                        <span class="skill-badge">Firestore</span>
+                        <span class="skill-badge">Firebase Auth</span>
+                        <span class="skill-badge">Responsive Design</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <!-- View More Button -->
+        <div class="view-more">
+            <button class="view-more-btn" onclick="spinGearAndRedirect()">
+                <i id="gear-icon" class="fas fa-gear"></i> View My Work
+            </button>
+        </div>
+
+    </section>
+    <!-- Internship Section -->
+    <section id="internships" class="internship-section">
+        <div class="section-header">
+            <h1>Professional Experience</h1>
+            <p>My industry journey and hands-on learning in software development</p>
+        </div>
+        <!-- <div class="internship-container"> -->
+            <!-- HashedBit Innovations -->
+            <!-- <div class="internship-card animate-in">
+                <div class="company-logo">
+                    <img src="./assets/img/internship/hashedbit-Photoroom.png" alt="HashedBit Innovations Logo"
+                        style="width: 50px; height: auto;">
+                </div>
+
+                <h3 class="internship-role">Software Development Intern</h3>
+                <p class="internship-company">HashedBit Innovations Pvt Ltd</p>
+                <span class="internship-duration">June 2026 - Present</span>
+                <p class="internship-description">
+                    Successfully completed a 2-month internship in Full Stack Development. Contributed to two live
+                    projects with both frontend and backend development, including API integration.
+                </p>
+
+                <div class="project-highlight">
+                    <h4>Key Projects & Contributions:</h4>
+                    <ul>
+                        <li><strong>JSCMS</strong> (JavaScript Content Management System): Contributed to 7 development
+                            tasks</li>
+                        <li><strong>LMS</strong> (Learning Management System): Completed 2 development tasks</li>
+                        <li>Collaborated using <strong>Jira Board</strong> for project management</li>
+                    </ul>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech-item">React</span>
+                    <span class="tech-item">JavaScript</span>
+                    <span class="tech-item">Node.js</span>
+                    <span class="tech-item">Express.js</span>
+                    <span class="tech-item">MySQL</span>
+                    <span class="tech-item">MERN Stack</span>
+                    <span class="tech-item">Jira</span>
+                </div>
+            </div> -->
+
+            <!-- HashedBit Innovations -->
+            <div class="internship-card animate-in delay-2">
+                <div class="company-logo">
+                    <img src="./assets/img/internship/hashedbit-Photoroom.png" alt="HashedBit Innovations Logo"
+                        style="width: 50px; height: auto;">
+                </div>
+                <h3 class="internship-role">Software Developer Intern</h3>
+                <p class="internship-company">HashedBit Innovations Pvt Ltd</p>
+                <span class="internship-duration">May 2026 - Present</span>
+                <p class="internship-description">
+                    Currently pursuing a Software Developement Internship. Completed 9 development tasks 
+                    in the LMS project and actively contributing to the ongoing HMS project, working
+                    on frontend and backend development, feature implementation, and API integration.
+                </p>
+
+                <div class="project-highlight">
+                    <h4>Key Projects & Contributions:</h4>
+                    <ul>
+                        <li><strong>LMS</strong> (Learning Management System): Successfully contributed 
+                            to 9 development tasks, including feature implementation, bug fixing, and system enhancements.</li>
+                        <li><strong>HMS</strong> (Hospital Management System): Currently contributing to the development 
+                            of new features and ongoing application improvements.</li>
+                    </ul>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech-item">JavaScript</span>
+                    <span class="tech-item">React.js</span>
+                    <span class="tech-item">Node.js</span>
+                    <span class="tech-item">Express.js</span>
+                    <span class="tech-item">MySQL</span>
+                    <span class="tech-item">MERN Stack</span>
+                </div>
+            </div>
+        </div>
+        <div class="view-more">
+            <button class="view-more-btn" onclick="spinGearAndRedirectExperience()">
+                <i id="gear-icon-experience" class="fas fa-gear"></i> View My Experience
+            </button>
+        </div>
+    </section>
+
+
+    <!-- Education Section -->
+    <section id="education" class="education-section">
+        <div class="section-header">
+            <h1>Academic Journey</h1>
+            <p>My educational milestones and achievements</p>
+        </div>
+        <div class="timeline">
+            <!-- BE -->
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="timeline-content">
+                    <img src="./assets/img/education/sipna-Photoroom.png" alt="Sipna College Logo"
+                        style="width: 50px; height: auto;">
+                    <div class="education-header">
+                        <div>
+                            <h3 class="education-title">Bachelor of Engineering (EXTC)</h3>
+                            <p class="education-institution">Sipna College of Engineering and Technology, Amravati</p>
+                        </div>
+                        <span class="education-duration">2021 - 2025</span>
+                    </div>
+                    <div class="education-grade">CGPA : 7.07</div>
+                    <p class="education-description">
+                        Graduated in Electronics & Telecommunication Engineering with a strong foundation in programming, software
+                        development, and problem-solving. Skilled in building optimized, scalable applications using
+                        modern technologies. Gained hands-on experience through academic projects, internships, and
+                        active participation in technical and cultural events.
+                    </p>
+                    <div class="achievements">
+                        <span class="achievement">Vidyoten Makeathon</span>
+                        <span class="achievement">Kridayan Cricket</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- HSC -->
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="timeline-content">
+                    <img src="./assets/img/education/college.png" alt="College Logo"
+                        style="width: 50px; height: auto;">
+                    <div class="education-header">
+                        <div>
+                            <h3 class="education-title">HSC (10+2)</h3>
+                            <p class="education-institution">Lal Bahadur Shastri Dhyanpeeth Junior College of Science and Commerce, Akot</p>
+                        </div>
+                        <span class="education-duration" style="width: 13rem;height: 2rem;">2019 - 2021</span>
+                    </div>
+                    <div class="education-grade">Percentage : 86.00%</div>
+                    <p class="education-description">
+                        Completed with excellent academic performance. Introduced to programming with HTML and CSS,
+                        sparking my interest in technology.
+                    </p>
+                    <div class="achievements">
+                        <span class="achievement">Cricket Team Captain</span>
+                        <span class="achievement">Programming Foundations</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SSC -->
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fas fa-school"></i>
+                </div>
+                <div class="timeline-content">
+                    <img src="./assets/img/education/school.png" alt="School Logo"
+                        style="width: 50px; height: auto;">
+                    <div class="education-header">
+                        <div>
+                            <h3 class="education-title">SSC (10)</h3>
+                            <p class="education-institution">Smt. Laxmibai Gangane Vidyalaya, Akot</p>
+                        </div>
+                        <span class="education-duration" style="width: 8rem;height: 2rem;">2018 - 2019</span>
+                    </div>
+                    <div class="education-grade">Percentage : 78.20%</div>
+                    <p class="education-description">
+                        Ranked among the Top 3 students academically for three consecutive years (7th-9th).
+                        Active in extracurricular activities.
+                    </p>
+                    <div class="achievements">
+                        <span class="achievement">Cricket Team Captain</span>
+                        <span class="achievement">Volleyball Team Captain</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <div class="banner">
+        <div class="flicker"></div>
+        <div class="overlay"></div>
+
+        <div class="content">
+            <div class="cta-text">
+                <span class="line">YOU KNOW THE BUSINESS.</span>
+                <span class="line">I KNOW THE CODING.</span>
+                <span class="line glow-pulse">MAYBE YOU AND I COULD PARTNER UP.</span>
+            </div>
+        </div>
+        <div>
+            <a href="./components/contact.html"> <button class="button">LET'S CONNECT</button></a>
+        </div>
+    </div>
+    <!-- Back to Top Button -->
+    <!-- <button id="backToTopBtn" title="Go to top">&#8679;</button> -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column footer-about">
+                <h3>About Me</h3>
+                <p>
+                    Full-Stack Developer with a passion for creating efficient,
+                    scalable applications with modern technologies. I bridge the gap
+                    between design and functionality.
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/Sujal-0803" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/sujalmaru0803" class="social-link"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/sujalll._24" class="social-link"><i
+                            class="fab fa-instagram"></i></a>
+
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+                    <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+                    <li><a href="#internships"><i class="fas fa-briefcase"></i> Experience</a></li>
+                    <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+
+                </ul>
+            </div>
+
+            <div class="footer-column footer-contact">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Pune, Maharashtra, India</p>
+                <p><i class="fas fa-envelope"></i> sujalmaru2004@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +91 7972891795</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 <strong>Sujal Maru</strong> &mdash; All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/heroscript.js"></script>
+
+</body>
+
+</html>

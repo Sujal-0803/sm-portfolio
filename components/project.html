@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0f0f0f;
+            --bg-darker: #0a0a0a;
+            --primary: #8917e7;
+            --primary-dark: #7c3cbb;
+            --secondary: #a466fc;
+            --accent: #ff6b6b;
+            --text-light: #e0e0e0;
+            --text-lighter: #f5f5f5;
+            --text-gray: #a0a0a0;
+            --card-bg: #1a1a2e;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        /* Optimized background elements */
+        .bg-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(50px);
+            opacity: 0.1;
+            z-index: -1;
+            will-change: transform;
+        }
+
+        .blob-1 {
+            background: var(--primary);
+            top: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+        }
+
+        .blob-2 {
+            background: var(--secondary);
+            bottom: -150px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+        }
+
+        .blob-3 {
+            background: var(--accent);
+            top: 50%;
+            right: 10%;
+            width: 200px;
+            height: 200px;
+        }
+
+        /* Header styles */
+        header {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-lighter);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .logo i {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-lighter);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* Page title */
+        .page-title {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .page-title h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-title h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .page-title p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Projects grid */
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            will-change: transform, opacity;
+        }
+
+        .project-card.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(157, 78, 221, 0.2);
+        }
+
+        .project-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            background: #2d2d42;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .project-img img.loaded {
+            opacity: 1;
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--secondary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            z-index: 2;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-lighter);
+        }
+
+        .project-content p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(157, 78, 221, 0.1);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .github-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: var(--transition);
+            flex: 1;
+            /* min-width: 140px; */
+            justify-content: center;
+        }
+
+        .github-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(157, 78, 221, 0.4);
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-gray);
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        /* View more button */
+        .view-more {
+            max-width: 1200px;
+            margin: 3rem auto;
+            text-align: center;
+        }
+
+        .view-more-btn {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.8rem 2.5rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .view-more-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(157, 78, 221, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            color: var(--text-gray);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Home button */
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(157, 78, 221, 0.4);
+            transition: var(--transition);
+        }
+
+        .home-btn i {
+            font-size: 1.2rem;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(157, 78, 221, 0.6);
+        }
+
+        .home-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Loading spinner */
+        .loading-spinner {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 15, 15, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(157, 78, 221, 0.3);
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .projects-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+
+            .page-title h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            /* Improved button scaling for mobile */
+            .github-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+                min-width: 120px;
+            }
+
+            .project-content {
+                padding: 1.2rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.8rem;
+            }
+
+            .project-stats {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .view-more-btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title h1 {
+                font-size: 2.3rem;
+            }
+
+            .project-img {
+                height: 180px;
+            }
+
+            .home-btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        .loading-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            /* Transparent */
+            backdrop-filter: blur(8px);
+            /* Frosted blur effect */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            font-size: 35px;
+            color: #7d45be;
+        }
+
+        /* Gear spin animation */
+        .loading-spinner i {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Logo styling with gradient text effect */
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--bg-dark);
+        }
+
+        .logopng {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loadingSpinner" class="loading-spinner">
+        <i class="fas fa-cog fa-spin"></i>
+    </div>
+
+
+    <!-- Optimized background blobs -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
+    <!-- Header -->
+    <header>
+        <a href="../index.html" class="logo">
+            <div class="logo-icon">
+                <img src="../assets/img/mylogo.png" alt="" class="logopng">
+            </div>
+            <!-- SUJAL MARU -->
+        </a>
+
+        <nav class="nav-links">
+            <a href="../index.html" class="home-btn"><i class="fas fa-home"></i> Home</a>
+        </nav>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <h1>My Projects</h1>
+        <p>Explore my latest work. Each project represents a unique challenge and solution crafted with passion and
+            expertise.</p>
+    </section>
+
+    <!-- Projects Grid -->
+    <div class="projects-container">
+
+        <!-- Project 1 - No live demo -->
+        <div class="project-card loaded">
+            <div class="project-img">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='220' viewBox='0 0 350 220'%3E%3Crect width='350' height='220' fill='%232d2d42'/%3E%3Ctext x='50%25' y='50%25' font-size='18' text-anchor='middle' fill='%239d4edd' font-family='Arial'%3ETalent Bridge%3C/text%3E%3C/svg%3E"
+                    alt="Codenext" loading="lazy" data-src="../assets/img/project/codenext.png">
+                <div class="project-badge">Java Full Stack</div>
+            </div>
+            <div class="project-content">
+                <h3>CodeNext — Developer Learning Platform</h3>
+                <p>Developed CodeNext, a dynamic developer learning portal 
+                featuring user authentication, course tutorials, 
+                interactive quizzes and a competitive leaderboard.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Servlets</span>
+                    <span class="skill-tag">JSP</span>
+                    <span class="skill-tag">JDBC</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Apache Tomcat</span>
+                    <span class="skill-tag">Responsive Design</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="github-btn live-demo-btn">
+                        <i class="fas fa-play-circle"></i> Live Demo
+                    </a>
+                    <div class="project-stats">
+                        <a href="https://github.com/Sujal-0803/CodeNext-Learning-Platform" class="github-btn">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2 - No live demo -->
+        <div class="project-card loaded">
+            <div class="project-img">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='220' viewBox='0 0 350 220'%3E%3Crect width='350' height='220' fill='%232d2d42'/%3E%3Ctext x='50%25' y='50%25' font-size='18' text-anchor='middle' fill='%239d4edd' font-family='Arial'%3EGym Management%3C/text%3E%3C/svg%3E"
+                    alt="Employee Data System" loading="lazy" data-src="../assets/img/project/eds.png">
+                <div class="project-badge">Java Full Stack</div>
+            </div>
+            <div class="project-content">
+                <h3>Employee Data System</h3>
+                <p>Developed Employee Data System, a full-stack HR management
+                   application with secure authentication, employee and department
+                   CRUD, live dashboard charts, activity logging, and CSV export.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Servlets</span>
+                    <span class="skill-tag">JSP</span>
+                    <span class="skill-tag">JDBC</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Apache Tomcat</span>
+                    <span class="skill-tag">MVC Architecture</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="github-btn live-demo-btn">
+                        <i class="fas fa-play-circle"></i> Live Demo
+                    </a>
+                    <div class="project-stats">
+                        <a href="https://github.com/Sujal-0803/Employee-Data-System.git" class="github-btn">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3 - live demo -->
+        <div class="project-card loaded">
+            <div class="project-img">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='220' viewBox='0 0 350 220'%3E%3Crect width='350' height='220' fill='%232d2d42'/%3E%3Ctext x='50%25' y='50%25' font-size='18' text-anchor='middle' fill='%239d4edd' font-family='Arial'%3EHotel Management%3C/text%3E%3C/svg%3E"
+                    alt="Cold Storage E-Commerce" loading="lazy" data-src="../assets/img/project/cold-storage.png">
+                <div class="project-badge">Web App</div>
+            </div>
+            <div class="project-content">
+                <h3>Cold Storage Ecommerce Website</h3>
+                <p>Cold storage ecommerce website with temperature monitoring, inventory tracking, and storage support services.
+                    Built to ensure product freshness and optimize storage operations.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript E56</span>
+                    <span class="skill-tag">Bootstrap 5</span>
+                    <span class="skill-tag">Firebase</span>
+                    <span class="skill-tag">Firestore</span>
+                    <span class="skill-tag">Firebase Auth</span>
+                    <span class="skill-tag">Responsive Design</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://sujal-0803.github.io/cold-storage-ecommerce/" class="github-btn live-demo-btn"
+                        target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-play-circle"></i> Live Demo
+                    </a>
+
+                    <div class="project-stats">
+                        <a href="https://github.com/Sujal-0803/cold-storage-ecommerce"
+                            class="github-btn">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 4 - Has live demo -->
+        <div class="project-card loaded">
+            <div class="project-img">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='220' viewBox='0 0 350 220'%3E%3Crect width='350' height='220' fill='%232d2d42'/%3E%3Ctext x='50%25' y='50%25' font-size='18' text-anchor='middle' fill='%239d4edd' font-family='Arial'%3ETalent Bridge%3C/text%3E%3C/svg%3E"
+                    alt="Modern Invoice Generator" loading="lazy" data-src="../assets/img/project/invoice.jpg">
+                <div class="project-badge">Web App</div>
+            </div>
+            <div class="project-content">
+                <h3>Modern Invoice Generator</h3>
+                <p>Automated invoice creation tool with customizable templates, client management, and payment tracking.
+                    Generates professional PDF invoices in seconds.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">PHP</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">html2pdf</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://invoicegenerator.free.nf/" class="github-btn live-demo-btn">
+                        <i class="fas fa-play-circle"></i> Live Demo
+                    </a>
+                    <div class="project-stats">
+                        <a href="https://github.com/Sujal-0803/Modern-Invoice-Generator" class="github-btn">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 5 - Has live demo -->
+        <div class="project-card loaded">
+            <div class="project-img">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='220' viewBox='0 0 350 220'%3E%3Crect width='350' height='220' fill='%232d2d42'/%3E%3Ctext x='50%25' y='50%25' font-size='18' text-anchor='middle' fill='%239d4edd' font-family='Arial'%3EInvoice Generator%3C/text%3E%3C/svg%3E"
+                    alt="Smart Agro" loading="lazy" data-src="../assets/img/project/agrologo.png">
+                <div class="project-badge">Web App</div>
+            </div>
+            <div class="project-content">
+                <h3>Smart Agro Portal Website</h3>
+                <p>Smart agro portal website with real-time farming insights, crop tracking, and agricultural support services.
+                    Built to enhance productivity and modernize farming operations.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">UI/UX</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://sujal-0803.github.io/Smart-Agro-Portal/" class="github-btn live-demo-btn">
+                        <i class="fas fa-play-circle"></i> Live Demo
+                    </a>
+                    <div class="project-stats">
+                        <a href="https://github.com/Sujal-0803/Smart-Agro-Portal" class="github-btn">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 6 - No live demo -->
+        <div class="project-card loaded">
+            <div class="project-img">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='220' viewBox='0 0 350 220'%3E%3Crect width='350' height='220' fill='%232d2d42'/%3E%3Ctext x='50%25' y='50%25' font-size='18' text-anchor='middle' fill='%239d4edd' font-family='Arial'%3ECattle Hub%3C/text%3E%3C/svg%3E"
+                    alt="Cattle Hub Management System" loading="lazy" data-src="../assets/img/project/cattle.jpg">
+                <div class="project-badge">Web App</div>
+            </div>
+            <div class="project-content">
+                <h3>Cattle Hub Management System</h3>
+                <p>A comprehensive livestock management platform for tracking cattle health, breeding, and farm
+                    operations. Streamlines farm management tasks with intuitive dashboards.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">css</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">PHP</span>
+                </div>
+                <div class="project-links">
+                    <a href="" class="github-btn live-demo-btn">
+                        <i class="fas fa-play-circle"></i> Live Demo
+                    </a>
+                    <div class="project-stats">
+                        <a href="https://github.com/Sujal-0803/Cattle-Hub-Management-System" class="github-btn">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 7 - Has live demo -->
+        <div class="project-card loaded">
+            <div class="project-img">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='220' viewBox='0 0 350 220'%3E%3Crect width='350' height='220' fill='%232d2d42'/%3E%3Ctext x='50%25' y='50%25' font-size='18' text-anchor='middle' fill='%239d4edd' font-family='Arial'%3EToDo List%3C/text%3E%3C/svg%3E"
+                    alt="portfolio" loading="lazy" data-src="../assets/img/project/portfolio.jpg">
+                <div class="project-badge">Showcase</div>
+            </div>
+            <div class="project-content">
+                <h3>SUJAL-PORTFOLIO</h3>
+                <p>Personal portfolio website showcasing projects, skills, and professional background. Features
+                    responsive design, project filtering, and contact form.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">UI/UX</span>
+                    <span class="skill-tag">Responsive Design</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="github-btn live-demo-btn">
+                        <i class="fas fa-play-circle"></i> Live Demo
+                    </a>
+                    <div class="project-stats">
+                        <a href="#" class="github-btn">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- View More Button -->
+    <div class="view-more">
+        <button id="loadMoreBtn" class="view-more-btn">Load More Projects</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/Sujal-0803" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/sujalmaru0803/" class="social-link"><i
+                    class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/sujalll._24" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2026 <strong>Sujal Maru</strong> &mdash; All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            loadingSpinner.style.display = 'flex';
+
+            // Handle Live Demo button clicks
+            document.querySelectorAll('.live-demo-btn').forEach(button => {
+                button.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+
+                    // Check if href is empty or invalid
+                    if (!href || href === '' || href === '#' || href === 'javascript:void(0)') {
+                        e.preventDefault();
+                        // Redirect to notfound.html page
+                        window.location.href = 'notfound.html';
+                    }
+                });
+            });
+
+            // Lazy loading images
+            const lazyLoadImages = () => {
+                const lazyImages = document.querySelectorAll('.project-img img[data-src]');
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+
+                            img.onload = () => {
+                                img.classList.add('loaded');
+                                checkAllImagesLoaded();
+                            };
+
+                            img.removeAttribute('data-src');
+                            observer.unobserve(img);
+                        }
+                    });
+                }, { rootMargin: '0px 0px 200px 0px' });
+
+                lazyImages.forEach(img => imageObserver.observe(img));
+            };
+
+            const checkAllImagesLoaded = () => {
+                const allImages = document.querySelectorAll('.project-img img');
+                const loadedImages = document.querySelectorAll('.project-img img.loaded');
+                if (allImages.length === loadedImages.length) {
+                    loadingSpinner.style.display = 'none';
+                }
+            };
+
+            lazyLoadImages();
+
+            // Animate project cards on scroll
+            const projectObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('loaded');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.project-card').forEach(card => {
+                projectObserver.observe(card);
+            });
+
+            // View more projects button
+            document.getElementById('loadMoreBtn').addEventListener('click', function () {
+                const btn = this;
+                btn.textContent = "Loading...";
+                btn.disabled = true;
+
+                // Simulate loading time (2 seconds)
+                setTimeout(() => {
+                    // Here you would actually load or reveal projects
+                    btn.textContent = "Load More Projects";
+                    btn.disabled = false;
+                    alert('More projects are coming soon !');
+                }, 2000);
+            });
+
+            // Safety fallback for spinner
+            setTimeout(() => {
+                loadingSpinner.style.display = 'none';
+            }, 1500);
+
+        });
+    </script>
+
+</body>
+</html>

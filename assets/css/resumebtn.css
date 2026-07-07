@@ -1,0 +1,70 @@
+/* ================ RESUME BUTTONS ================ */
+
+/* Container for call-to-action buttons */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: nowrap;
+  max-width: 100%;
+  padding: 0 20px;
+}
+
+/* Uniform button style */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 40px;
+  min-width: 220px;
+  border: none;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  box-shadow: 0 0 12px rgba(142, 45, 226, 0.6);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(142, 45, 226, 0.8);
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+}
+
+/* Icon inside button */
+.btn i {
+  font-size: 1.1rem;
+}
+
+/* ================ RESPONSIVE DESIGN ================ */
+
+/* Mobile devices */
+@media (max-width: 600px) {
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 280px;
+    min-width: auto;
+    padding: 14px 30px;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 400px) {
+  .btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
